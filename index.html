@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Varadraj Arun Nalavade - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 w-full bg-white shadow-lg z-50 transition-all duration-300">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="text-2xl font-bold text-blue-600">
+                    <span id="nav-name"></span>
+                </div>
+                <div class="hidden md:flex space-x-8" id="nav-links">
+                    <!-- Navigation links will be populated by JavaScript -->
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-blue-600">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden pb-4">
+                <!-- Mobile navigation will be populated by JavaScript -->
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-600 to-purple-700 text-white">
+        <div class="text-center px-4">
+            <h1 id="hero-name" class="text-5xl md:text-7xl font-bold mb-4 animate-fade-in"></h1>
+            <p id="hero-role" class="text-xl md:text-2xl mb-8 opacity-90"></p>
+            <button id="hero-cta" class="bg-white text-blue-600 px-8 py-3 rounded-full text-lg font-semibold hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 shadow-lg">
+                View My Work
+            </button>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-16 text-gray-800">About Me</h2>
+            <div class="max-w-4xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <div id="profile-photo" class="w-80 h-80 mx-auto mb-8 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center text-white text-6xl shadow-2xl">
+                            <!-- Profile photo placeholder -->
+                        </div>
+                    </div>
+                    <div>
+                        <p id="about-description" class="text-lg text-gray-600 mb-8 leading-relaxed"></p>
+                        <div class="mb-8">
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-800">Personal Details</h3>
+                            <div id="personal-details" class="space-y-3">
+                                <!-- Personal details will be populated by JavaScript -->
+                            </div>
+                        </div>
+                        <div class="mb-8">
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-800">Hobbies</h3>
+                            <div id="hobbies-container" class="flex flex-wrap gap-3">
+                                <!-- Hobbies will be populated by JavaScript -->
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-800">Strengths</h3>
+                            <div id="strengths-container" class="flex flex-wrap gap-3">
+                                <!-- Strengths will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-16 text-gray-800">Education</h2>
+            <div id="education-timeline" class="max-w-4xl mx-auto">
+                <!-- Education timeline will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-16 text-gray-800">Skills</h2>
+            <div class="max-w-6xl mx-auto">
+                <div id="skills-container" class="space-y-12">
+                    <!-- Skills categories will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-16 text-gray-800">Projects</h2>
+            <div id="projects-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Project cards will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-16 text-gray-800">Certifications</h2>
+            <div id="certifications-grid" class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Certifications will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Languages Section -->
+    <section id="languages" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-16 text-gray-800">Languages</h2>
+            <div id="languages-container" class="flex justify-center flex-wrap gap-6 max-w-2xl mx-auto">
+                <!-- Languages will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-16 text-gray-800">Contact Me</h2>
+            <div class="max-w-4xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-6 text-gray-800">Get in Touch</h3>
+                        <div id="contact-info" class="space-y-4">
+                            <!-- Contact info will be populated by JavaScript -->
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-6 text-gray-800">Send Message</h3>
+                        <form id="contact-form" class="space-y-4">
+                            <div>
+                                <input type="text" placeholder="Your Name" required 
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            </div>
+                            <div>
+                                <input type="email" placeholder="Your Email" required 
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            </div>
+                            <div>
+                                <textarea placeholder="Your Message" rows="5" required 
+                                          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"></textarea>
+                            </div>
+                            <button type="submit" 
+                                    class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors duration-300 font-semibold">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p id="footer-text" class="text-gray-400"></p>
+        </div>
+    </footer>
+
+    <script>
+        // Portfolio Data
+        const portfolioData = {
+            personal: {
+                name: "Varadraj Arun Nalavade",
+                role: "BSc Computer Science Student | Aspiring Developer",
+                email: "varadrajnalavade711@gmail.com",
+                phone: "+91 8669050587",
+                location: "Sangli, Maharashtra",
+                dateOfBirth: "07/11/2005",
+                description: "Passionate Computer Science student with a keen interest in web development, programming, and IT security. Always eager to learn new technologies and solve complex problems through innovative solutions.",
+                hobbies: ["Listening to music", "Drawing", "Sketching"],
+                strengths: ["Active Listener", "Quick Learner", "Creative", "Focused"]
+            },
+
+            navigation: [
+                { name: "Home", href: "#home" },
+                { name: "About", href: "#about" },
+                { name: "Education", href: "#education" },
+                { name: "Skills", href: "#skills" },
+                { name: "Projects", href: "#projects" },
+                { name: "Contact", href: "#contact" }
+            ],
+
+            education: [
+                {
+                    level: "Bachelor of Science (Computer Science)",
+                    institution: "University Name",
+                    duration: "2023 - Present",
+                    status: "Pursuing",
+                    icon: "fas fa-graduation-cap"
+                },
+                {
+                    level: "Higher Secondary Certificate (HSC)",
+                    institution: "College Name",
+                    duration: "2021 - 2023",
+                    status: "Completed",
+                    icon: "fas fa-school"
+                },
+                {
+                    level: "Secondary School Certificate (SSC)",
+                    institution: "School Name",
+                    duration: "2019 - 2021",
+                    status: "Completed",
+                    icon: "fas fa-book"
+                }
+            ],
+
+            skills: {
+                "Programming Languages": ["Python", "JavaScript", "Java", "C++", "HTML5", "CSS3"],
+                "Web Development": ["React", "Node.js", "Express.js", "MongoDB", "MySQL", "Bootstrap", "Tailwind CSS"],
+                "IT Security Support": ["Network Security", "System Administration", "Troubleshooting", "Data Protection"]
+            },
+
+            projects: [
+                {
+                    title: "Large File Sharing",
+                    description: "A secure web application for sharing large files with advanced encryption and user authentication features.",
+                    techStack: ["Node.js", "Express", "MongoDB", "Socket.io"],
+                    github: "https://github.com/varadraj",
+                    demo: "https://demo-link.com",
+                    icon: "fas fa-share-alt"
+                },
+                {
+                    title: "Meet Stranger Web App",
+                    description: "Real-time chat application that connects strangers worldwide with video calling and text messaging capabilities.",
+                    techStack: ["React", "WebRTC", "Socket.io", "Node.js"],
+                    github: "https://github.com/varadraj",
+                    demo: "https://demo-link.com",
+                    icon: "fas fa-video"
+                },
+                {
+                    title: "Amazon Clone",
+                    description: "Full-stack e-commerce platform with shopping cart, payment integration, and admin dashboard.",
+                    techStack: ["React", "Firebase", "Stripe API", "CSS3"],
+                    github: "https://github.com/varadraj",
+                    demo: "https://demo-link.com",
+                    icon: "fas fa-shopping-cart"
+                }
+            ],
+
+            certifications: [
+                {
+                    name: "Python Workshop",
+                    issuer: "Tech Institute",
+                    date: "2024",
+                    icon: "fab fa-python"
+                },
+                {
+                    name: "Database Management Systems (DBMS)",
+                    issuer: "Computer Science Department",
+                    date: "2024",
+                    icon: "fas fa-database"
+                }
+            ],
+
+            languages: [
+                { name: "English", proficiency: "Fluent" },
+                { name: "Hindi", proficiency: "Native" },
+                { name: "Marathi", proficiency: "Native" }
+            ]
+        };
+
+        // DOM Content Loaded Event
+        document.addEventListener('DOMContentLoaded', function() {
+            populateNavigation();
+            populateHeroSection();
+            populateAboutSection();
+            populateEducationSection();
+            populateSkillsSection();
+            populateProjectsSection();
+            populateCertificationsSection();
+            populateLanguagesSection();
+            populateContactSection();
+            populateFooter();
+            initializeEventListeners();
+        });
+
+        // Populate Navigation
+        function populateNavigation() {
+            const navName = document.getElementById('nav-name');
+            navName.textContent = portfolioData.personal.name.split(' ')[0];
+
+            const navLinks = document.getElementById('nav-links');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            portfolioData.navigation.forEach(item => {
+                // Desktop navigation
+                const link = document.createElement('a');
+                link.href = item.href;
+                link.textContent = item.name;
+                link.className = 'text-gray-600 hover:text-blue-600 transition-colors duration-300 scroll-link';
+                navLinks.appendChild(link);
+
+                // Mobile navigation
+                const mobileLink = document.createElement('a');
+                mobileLink.href = item.href;
+                mobileLink.textContent = item.name;
+                mobileLink.className = 'block py-2 text-gray-600 hover:text-blue-600 transition-colors duration-300 scroll-link';
+                mobileMenu.appendChild(mobileLink);
+            });
+        }
+
+        // Populate Hero Section
+        function populateHeroSection() {
+            document.getElementById('hero-name').textContent = portfolioData.personal.name;
+            document.getElementById('hero-role').textContent = portfolioData.personal.role;
+            
+            const ctaButton = document.getElementById('hero-cta');
+            ctaButton.addEventListener('click', () => {
+                document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
+            });
+        }
+
+        // Populate About Section
+        function populateAboutSection() {
+            // Profile photo
+            const profilePhoto = document.getElementById('profile-photo');
+            profilePhoto.innerHTML = `
+                <img src="https://avatars.githubusercontent.com/u/176756518?v=4" 
+                     alt="${portfolioData.personal.name}" 
+                     class="w-full h-full object-cover rounded-full border-4 border-white shadow-lg">
+            `;
+
+            // About description
+            document.getElementById('about-description').textContent = portfolioData.personal.description;
+
+            // Personal details
+            const personalDetails = document.getElementById('personal-details');
+            const details = [
+                { label: 'Date of Birth', value: portfolioData.personal.dateOfBirth, icon: 'fas fa-birthday-cake' },
+                { label: 'Location', value: portfolioData.personal.location, icon: 'fas fa-map-marker-alt' },
+                { label: 'Email', value: portfolioData.personal.email, icon: 'fas fa-envelope' },
+                { label: 'Phone', value: portfolioData.personal.phone, icon: 'fas fa-phone' }
+            ];
+
+            details.forEach(detail => {
+                const detailDiv = document.createElement('div');
+                detailDiv.className = 'flex items-center';
+                detailDiv.innerHTML = `
+                    <i class="${detail.icon} text-blue-600 mr-3"></i>
+                    <span class="font-medium mr-2">${detail.label}:</span>
+                    <span class="text-gray-600">${detail.value}</span>
+                `;
+                personalDetails.appendChild(detailDiv);
+            });
+
+            // Hobbies
+            const hobbiesContainer = document.getElementById('hobbies-container');
+            portfolioData.personal.hobbies.forEach(hobby => {
+                const hobbyTag = document.createElement('span');
+                hobbyTag.className = 'bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium';
+                hobbyTag.textContent = hobby;
+                hobbiesContainer.appendChild(hobbyTag);
+            });
+
+            // Strengths
+            const strengthsContainer = document.getElementById('strengths-container');
+            portfolioData.personal.strengths.forEach(strength => {
+                const strengthTag = document.createElement('span');
+                strengthTag.className = 'bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium';
+                strengthTag.textContent = strength;
+                strengthsContainer.appendChild(strengthTag);
+            });
+        }
+
+        // Populate Education Section
+        function populateEducationSection() {
+            const educationTimeline = document.getElementById('education-timeline');
+            
+            portfolioData.education.forEach((edu, index) => {
+                const eduCard = document.createElement('div');
+                eduCard.className = 'relative flex items-center mb-8';
+                
+                eduCard.innerHTML = `
+                    <div class="flex-shrink-0 w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center text-white mr-6">
+                        <i class="${edu.icon} text-2xl"></i>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg flex-1">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">${edu.level}</h3>
+                        <p class="text-gray-600 mb-2">${edu.institution}</p>
+                        <p class="text-sm text-gray-500">${edu.duration}</p>
+                        <span class="inline-block mt-2 px-3 py-1 bg-blue-100 text-blue-800 text-xs rounded-full font-medium">${edu.status}</span>
+                    </div>
+                `;
+                
+                educationTimeline.appendChild(eduCard);
+            });
+        }
+
+        // Populate Skills Section
+        function populateSkillsSection() {
+            const skillsContainer = document.getElementById('skills-container');
+            
+            Object.entries(portfolioData.skills).forEach(([category, skills]) => {
+                const skillCategory = document.createElement('div');
+                skillCategory.className = 'text-center';
+                
+                skillCategory.innerHTML = `
+                    <h3 class="text-2xl font-semibold mb-6 text-gray-800">${category}</h3>
+                    <div class="flex flex-wrap justify-center gap-3">
+                        ${skills.map(skill => `
+                            <span class="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-medium transform hover:scale-105 transition-transform duration-300 shadow-md">
+                                ${skill}
+                            </span>
+                        `).join('')}
+                    </div>
+                `;
+                
+                skillsContainer.appendChild(skillCategory);
+            });
+        }
+
+        // Populate Projects Section
+        function populateProjectsSection() {
+            const projectsGrid = document.getElementById('projects-grid');
+            
+            portfolioData.projects.forEach(project => {
+                const projectCard = document.createElement('div');
+                projectCard.className = 'bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transform hover:scale-105 transition-all duration-300';
+                
+                projectCard.innerHTML = `
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <i class="${project.icon} text-3xl text-blue-600 mr-3"></i>
+                            <h3 class="text-xl font-semibold text-gray-800">${project.title}</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">${project.description}</p>
+                        <div class="mb-4">
+                            <div class="flex flex-wrap gap-2">
+                                ${project.techStack.map(tech => `
+                                    <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-sm">${tech}</span>
+                                `).join('')}
+                            </div>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="${project.github}" target="_blank" 
+                               class="flex items-center text-gray-600 hover:text-blue-600 transition-colors duration-300">
+                                <i class="fab fa-github mr-2"></i>GitHub
+                            </a>
+                            <a href="${project.demo}" target="_blank" 
+                               class="flex items-center text-gray-600 hover:text-blue-600 transition-colors duration-300">
+                                <i class="fas fa-external-link-alt mr-2"></i>Demo
+                            </a>
+                        </div>
+                    </div>
+                `;
+                
+                projectsGrid.appendChild(projectCard);
+            });
+        }
+
+        // Populate Certifications Section
+        function populateCertificationsSection() {
+            const certificationsGrid = document.getElementById('certifications-grid');
+            
+            portfolioData.certifications.forEach(cert => {
+                const certCard = document.createElement('div');
+                certCard.className = 'bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300';
+                
+                certCard.innerHTML = `
+                    <div class="flex items-center mb-4">
+                        <i class="${cert.icon} text-3xl text-blue-600 mr-4"></i>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800">${cert.name}</h3>
+                            <p class="text-gray-600">${cert.issuer}</p>
+                            <p class="text-sm text-gray-500">${cert.date}</p>
+                        </div>
+                    </div>
+                `;
+                
+                certificationsGrid.appendChild(certCard);
+            });
+        }
+
+        // Populate Languages Section
+        function populateLanguagesSection() {
+            const languagesContainer = document.getElementById('languages-container');
+            
+            portfolioData.languages.forEach(language => {
+                const langCard = document.createElement('div');
+                langCard.className = 'bg-white p-6 rounded-lg shadow-lg text-center hover:shadow-xl transition-shadow duration-300';
+                
+                langCard.innerHTML = `
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">${language.name}</h3>
+                    <p class="text-blue-600 font-medium">${language.proficiency}</p>
+                `;
+                
+                languagesContainer.appendChild(langCard);
+            });
+        }
+
+        // Populate Contact Section
+        function populateContactSection() {
+            const contactInfo = document.getElementById('contact-info');
+            
+            const contactDetails = [
+                { icon: 'fas fa-envelope', label: 'Email', value: portfolioData.personal.email, href: `mailto:${portfolioData.personal.email}` },
+                { icon: 'fas fa-phone', label: 'Phone', value: portfolioData.personal.phone, href: `tel:${portfolioData.personal.phone}` },
+                { icon: 'fas fa-map-marker-alt', label: 'Location', value: portfolioData.personal.location, href: null }
+            ];
+            
+            contactDetails.forEach(contact => {
+                const contactDiv = document.createElement('div');
+                contactDiv.className = 'flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors duration-300';
+                
+                if (contact.href) {
+                    contactDiv.innerHTML = `
+                        <i class="${contact.icon} text-2xl text-blue-600 mr-4"></i>
+                        <div>
+                            <p class="font-medium text-gray-800">${contact.label}</p>
+                            <a href="${contact.href}" class="text-blue-600 hover:text-blue-800">${contact.value}</a>
+                        </div>
+                    `;
+                } else {
+                    contactDiv.innerHTML = `
+                        <i class="${contact.icon} text-2xl text-blue-600 mr-4"></i>
+                        <div>
+                            <p class="font-medium text-gray-800">${contact.label}</p>
+                            <p class="text-gray-600">${contact.value}</p>
+                        </div>
+                    `;
+                }
+                
+                contactInfo.appendChild(contactDiv);
+            });
+        }
+
+        // Populate Footer
+        function populateFooter() {
+            const footerText = document.getElementById('footer-text');
+            footerText.textContent = `© ${new Date().getFullYear()} ${portfolioData.personal.name}. All rights reserved.`;
+        }
+
+        // Initialize Event Listeners
+        function initializeEventListeners() {
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('.scroll-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                    // Close mobile menu if open
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                });
+            });
+
+            // Mobile menu toggle
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Contact form submission
+            const contactForm = document.getElementById('contact-form');
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your message! I will get back to you soon.');
+                this.reset();
+            });
+
+            // Navbar scroll effect
+            window.addEventListener('scroll', function() {
+                const navbar = document.getElementById('navbar');
+                if (window.scrollY > 100) {
+                    navbar.classList.add('bg-white/95', 'backdrop-blur-sm');
+                } else {
+                    navbar.classList.remove('bg-white/95', 'backdrop-blur-sm');
+                }
+            });
+
+            // Add intersection observer for animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fade-in');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all sections for animations
+            document.querySelectorAll('section').forEach(section => {
+                observer.observe(section);
+            });
+        }
+    </script>
+
+    <style>
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDelay {
+            0%, 30% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 0.9;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background: linear-gradient(135deg, #3b82f6, #8b5cf6, #6366f1);
+            }
+            33% {
+                background: linear-gradient(135deg, #8b5cf6, #6366f1, #3b82f6);
+            }
+            66% {
+                background: linear-gradient(135deg, #6366f1, #3b82f6, #8b5cf6);
+            }
+            100% {
+                background: linear-gradient(135deg, #3b82f6, #8b5cf6, #6366f1);
+            }
+        }
+
+        @keyframes floatSlow {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+        }
+
+        @keyframes floatMedium {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-15px) rotate(-3deg);
+            }
+        }
+
+        @keyframes floatFast {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-25px) rotate(8deg);
+            }
+        }
+
+        @keyframes floatParticle {
+            0% {
+                transform: translateY(100vh) translateX(0) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.2;
+                transform: scale(1);
+            }
+            90% {
+                opacity: 0.2;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px) scale(0);
+                opacity: 0;
+            }
+        }
+
+        @keyframes textGlow {
+            0%, 100% {
+                text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            }
+            50% {
+                text-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+            }
+        }
+
+        @keyframes bounceSubtle {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .animate-fade-in-delay {
+            animation: fadeInDelay 1.5s ease-out;
+        }
+
+        .animate-gradient-shift {
+            animation: gradientShift 8s ease-in-out infinite;
+        }
+
+        .animate-float-slow {
+            animation: floatSlow 6s ease-in-out infinite;
+        }
+
+        .animate-float-medium {
+            animation: floatMedium 4s ease-in-out infinite;
+        }
+
+        .animate-float-fast {
+            animation: floatFast 3s ease-in-out infinite;
+        }
+
+        .animate-float-particle {
+            animation: floatParticle linear infinite;
+        }
+
+        .animate-text-glow {
+            animation: textGlow 3s ease-in-out infinite;
+        }
+
+        .animate-bounce-subtle {
+            animation: bounceSubtle 2s ease-in-out infinite;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</body>
+</html>
