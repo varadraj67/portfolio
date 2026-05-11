@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Varadraj Arun Nalavade — Creative Developer</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <script>
@@ -428,6 +428,73 @@
             border-radius: 50%;
             background: linear-gradient(135deg, #7c3aed, #f43f5e);
         }
+
+        /* ── Snackbar ── */
+        #snackbar {
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            z-index: 9999;
+            min-width: 300px;
+            max-width: 90vw;
+            background: white;
+            border: 1px solid rgba(196,181,253,0.5);
+            border-radius: 16px;
+            box-shadow: 0 16px 48px rgba(109,40,217,0.18), 0 2px 8px rgba(109,40,217,0.08);
+            padding: 14px 18px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+            overflow: hidden;
+        }
+        #snackbar.show {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateX(-50%) translateY(0);
+        }
+        #snackbar .snack-icon {
+            width: 38px; height: 38px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #7c3aed, #a78bfa);
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 17px;
+            flex-shrink: 0;
+        }
+        #snackbar .snack-body { flex: 1; min-width: 0; }
+        #snackbar .snack-title { font-size: 14px; font-weight: 700; color: #1a1523; margin-bottom: 2px; }
+        #snackbar .snack-msg { font-size: 12px; color: #64748b; }
+        #snackbar .snack-close {
+            background: none; border: none; cursor: pointer;
+            color: #94a3b8; font-size: 18px;
+            padding: 4px; border-radius: 8px;
+            transition: color 0.2s, background 0.2s;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+        }
+        #snackbar .snack-close:hover { color: #6d28d9; background: #f5f3ff; }
+        #snackbar .snack-progress {
+            position: absolute;
+            bottom: 0; left: 0;
+            height: 3px;
+            border-radius: 0 0 16px 16px;
+            background: linear-gradient(90deg, #7c3aed, #f43f5e);
+            width: 100%;
+            transform-origin: left;
+        }
+        #snackbar.show .snack-progress {
+            animation: snackProgress 4s linear forwards;
+        }
+        @keyframes snackProgress {
+            from { transform: scaleX(1); }
+            to   { transform: scaleX(0); }
+        }
+        @media (max-width: 768px) {
+            #snackbar { bottom: 110px; }
+        }
     </style>
 </head>
 
@@ -452,23 +519,23 @@
             <!-- Nav links -->
             <div class="nav-links-bar flex items-center">
                 <a href="#home" class="nav-link-item active flex items-center gap-2 px-4 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 text-violet-700 bg-violet-50">
-                    <i class="fas fa-home text-base"></i>
+                    <i class="bi bi-house-fill text-base"></i>
                     <span class="nav-text-label">Home</span>
                 </a>
                 <a href="#about" class="nav-link-item flex items-center gap-2 px-4 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 text-slate-500 hover:text-violet-700 hover:bg-violet-50">
-                    <i class="fas fa-user text-base"></i>
+                    <i class="bi bi-person-fill text-base"></i>
                     <span class="nav-text-label">About</span>
                 </a>
                 <a href="#skills" class="nav-link-item flex items-center gap-2 px-4 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 text-slate-500 hover:text-violet-700 hover:bg-violet-50">
-                    <i class="fas fa-layer-group text-base"></i>
+                    <i class="bi bi-layers-fill text-base"></i>
                     <span class="nav-text-label">Skills</span>
                 </a>
                 <a href="#projects" class="nav-link-item flex items-center gap-2 px-4 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 text-slate-500 hover:text-violet-700 hover:bg-violet-50">
-                    <i class="fas fa-folder-open text-base"></i>
+                    <i class="bi bi-folder2-open text-base"></i>
                     <span class="nav-text-label">Projects</span>
                 </a>
                 <a href="#contact" class="nav-link-item flex items-center gap-2 px-4 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 text-slate-500 hover:text-violet-700 hover:bg-violet-50">
-                    <i class="fas fa-envelope text-base"></i>
+                    <i class="bi bi-envelope-fill text-base"></i>
                     <span class="nav-text-label">Contact</span>
                 </a>
             </div>
@@ -487,7 +554,7 @@
     <div class="max-w-4xl mx-auto text-center relative z-10">
         <!-- Eyebrow -->
         <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-violet-200 shadow-sm text-sm font-semibold text-violet-600 mb-8 animate-fade-in">
-            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse inline-block"></span>
             Available for opportunities
         </div>
 
@@ -497,16 +564,16 @@
         </h1>
 
         <p class="text-lg md:text-xl text-slate-500 font-light leading-relaxed mb-10 max-w-2xl mx-auto" style="animation: slideUp 0.7s 0.2s ease-out forwards; opacity:0;">
-            Creative developer &amp; CS student passionate about crafting elegant solutions.
+            Creative developer &amp; B.Sc. CS student passionate about crafting elegant solutions.
             Specializing in web development, design, and innovative problem-solving.
         </p>
 
         <div class="flex flex-wrap gap-4 justify-center" style="animation: slideUp 0.7s 0.4s ease-out forwards; opacity:0;">
             <a href="#projects" class="btn-primary">
-                <i class="fas fa-arrow-down"></i> View Work
+                <i class="bi bi-arrow-down"></i> View Work
             </a>
             <a href="#contact" class="btn-secondary">
-                <i class="fas fa-envelope"></i> Get in Touch
+                <i class="bi bi-envelope"></i> Get in Touch
             </a>
         </div>
 
@@ -521,8 +588,8 @@
                 <span class="text-sm text-slate-500 font-medium">Stack dev</span>
             </div>
             <div class="card px-5 py-3 flex items-center gap-3 animate-float">
-                <span class="text-2xl font-display font-semibold grad-text">CSE</span>
-                <span class="text-sm text-slate-500 font-medium">Student</span>
+                <span class="text-2xl font-display font-semibold grad-text">B.Sc.</span>
+                <span class="text-sm text-slate-500 font-medium">CS Student</span>
             </div>
         </div>
     </div>
@@ -611,7 +678,7 @@
             <div class="card skill-card p-7 reveal">
                 <div class="flex items-center gap-3 mb-5">
                     <div class="w-9 h-9 rounded-xl bg-violet-100 flex items-center justify-center">
-                        <i class="fas fa-code text-violet-600 text-sm"></i>
+                        <i class="bi bi-code-slash text-violet-600"></i>
                     </div>
                     <h3 class="font-bold text-ink text-lg">Programming</h3>
                 </div>
@@ -627,7 +694,7 @@
             <div class="card skill-card p-7 reveal">
                 <div class="flex items-center gap-3 mb-5">
                     <div class="w-9 h-9 rounded-xl bg-rose-100 flex items-center justify-center">
-                        <i class="fas fa-palette text-rose-500 text-sm"></i>
+                        <i class="bi bi-palette-fill text-rose-500"></i>
                     </div>
                     <h3 class="font-bold text-ink text-lg">Frontend</h3>
                 </div>
@@ -643,7 +710,7 @@
             <div class="card skill-card p-7 reveal">
                 <div class="flex items-center gap-3 mb-5">
                     <div class="w-9 h-9 rounded-xl bg-violet-100 flex items-center justify-center">
-                        <i class="fas fa-server text-violet-600 text-sm"></i>
+                        <i class="bi bi-hdd-stack-fill text-violet-600"></i>
                     </div>
                     <h3 class="font-bold text-ink text-lg">Backend &amp; DB</h3>
                 </div>
@@ -659,7 +726,7 @@
             <div class="card skill-card p-7 reveal">
                 <div class="flex items-center gap-3 mb-5">
                     <div class="w-9 h-9 rounded-xl bg-rose-100 flex items-center justify-center">
-                        <i class="fas fa-tools text-rose-500 text-sm"></i>
+                        <i class="bi bi-tools text-rose-500"></i>
                     </div>
                     <h3 class="font-bold text-ink text-lg">Tools &amp; Methods</h3>
                 </div>
@@ -687,7 +754,7 @@
             <!-- NEP Portal -->
             <div class="card p-7 flex flex-col reveal">
                 <div class="proj-icon mb-5">
-                    <i class="fas fa-graduation-cap"></i>
+                    <i class="bi bi-mortarboard-fill"></i>
                 </div>
                 <h3 class="text-xl font-bold text-ink mb-3">NEP Portal</h3>
                 <p class="text-slate-500 text-sm leading-relaxed mb-5 flex-1">
@@ -701,10 +768,10 @@
                 </div>
                 <div class="flex gap-5">
                     <a href="#" class="flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-violet-600 transition-colors">
-                        <i class="fab fa-github"></i> Code
+                        <i class="bi bi-github"></i> Code
                     </a>
                     <a href="https://avitorx.fwh.is/?i=1" class="flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-violet-600 transition-colors">
-                        <i class="fas fa-external-link-alt"></i> Live
+                        <i class="bi bi-box-arrow-up-right"></i> Live
                     </a>
                 </div>
             </div>
@@ -712,7 +779,7 @@
             <!-- Powerfit Gym -->
             <div class="card p-7 flex flex-col reveal">
                 <div class="proj-icon mb-5" style="background: linear-gradient(135deg, #f43f5e, #fb7185);">
-                    <i class="fas fa-dumbbell"></i>
+                    <i class="bi bi-activity"></i>
                 </div>
                 <h3 class="text-xl font-bold text-ink mb-3">Powerfit Gym</h3>
                 <p class="text-slate-500 text-sm leading-relaxed mb-5 flex-1">
@@ -726,10 +793,10 @@
                 </div>
                 <div class="flex gap-5">
                     <a href="#" class="flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-violet-600 transition-colors">
-                        <i class="fab fa-github"></i> Code
+                        <i class="bi bi-github"></i> Code
                     </a>
                     <a href="#" class="flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-violet-600 transition-colors">
-                        <i class="fas fa-external-link-alt"></i> Live
+                        <i class="bi bi-box-arrow-up-right"></i> Live
                     </a>
                 </div>
             </div>
@@ -737,7 +804,7 @@
             <!-- MyBank -->
             <div class="card p-7 flex flex-col reveal">
                 <div class="proj-icon mb-5" style="background: linear-gradient(135deg, #06b6d4, #0891b2);">
-                    <i class="fas fa-landmark"></i>
+                    <i class="bi bi-bank2"></i>
                 </div>
                 <h3 class="text-xl font-bold text-ink mb-3">MyBank</h3>
                 <p class="text-slate-500 text-sm leading-relaxed mb-5 flex-1">
@@ -751,10 +818,10 @@
                 </div>
                 <div class="flex gap-5">
                     <a href="#" class="flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-violet-600 transition-colors">
-                        <i class="fab fa-github"></i> Code
+                        <i class="bi bi-github"></i> Code
                     </a>
                     <a href="#" class="flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-violet-600 transition-colors">
-                        <i class="fas fa-external-link-alt"></i> Live
+                        <i class="bi bi-box-arrow-up-right"></i> Live
                     </a>
                 </div>
             </div>
@@ -774,21 +841,21 @@
             <!-- Info -->
             <div class="flex flex-col gap-5 reveal">
                 <div class="card p-5 flex gap-4 items-start">
-                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                    <div class="contact-icon"><i class="bi bi-envelope-fill"></i></div>
                     <div>
                         <h4 class="font-bold text-ink mb-1">Email</h4>
                         <p class="text-slate-500 text-sm">varadrajnalavade711@gmail.com</p>
                     </div>
                 </div>
                 <div class="card p-5 flex gap-4 items-start">
-                    <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                    <div class="contact-icon"><i class="bi bi-telephone-fill"></i></div>
                     <div>
                         <h4 class="font-bold text-ink mb-1">Phone</h4>
                         <p class="text-slate-500 text-sm">+91 8669050587</p>
                     </div>
                 </div>
                 <div class="card p-5 flex gap-4 items-start">
-                    <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="contact-icon"><i class="bi bi-geo-alt-fill"></i></div>
                     <div>
                         <h4 class="font-bold text-ink mb-1">Location</h4>
                         <p class="text-slate-500 text-sm">Sangli, Maharashtra, India</p>
@@ -796,9 +863,9 @@
                 </div>
 
                 <div class="flex gap-3 mt-4">
-                    <a href="#" class="social-btn"><i class="fab fa-github"></i></a>
-                    <a href="#" class="social-btn"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" class="social-btn"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-btn"><i class="bi bi-github"></i></a>
+                    <a href="#" class="social-btn"><i class="bi bi-linkedin"></i></a>
+                    <a href="#" class="social-btn"><i class="bi bi-twitter-x"></i></a>
                 </div>
             </div>
 
@@ -818,7 +885,7 @@
                         <textarea class="form-textarea" rows="5" required placeholder="Your message..."></textarea>
                     </div>
                     <button type="submit" class="btn-primary w-full justify-center">
-                        <i class="fas fa-paper-plane"></i> Send Message
+                        <i class="bi bi-send-fill"></i> Send Message
                     </button>
                 </form>
             </div>
@@ -826,6 +893,19 @@
     </div>
 </section>
 </main>
+
+<!-- ── Snackbar ── -->
+<div id="snackbar" role="alert" aria-live="assertive">
+    <div class="snack-icon"><i class="bi bi-check2-circle"></i></div>
+    <div class="snack-body">
+        <div class="snack-title">Message sent!</div>
+        <div class="snack-msg">I'll get back to you soon 🙌</div>
+    </div>
+    <button class="snack-close" onclick="hideSnackbar()" aria-label="Close">
+        <i class="bi bi-x-lg"></i>
+    </button>
+    <div class="snack-progress"></div>
+</div>
 
 <!-- Footer -->
 <footer class="py-10 px-6 border-t border-violet-100 text-center">
@@ -883,10 +963,29 @@
 
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
+    // ── Snackbar ──
+    let snackTimer = null;
+
+    function showSnackbar() {
+        const sb = document.getElementById('snackbar');
+        // Reset progress animation by forcing reflow
+        sb.classList.remove('show');
+        void sb.offsetWidth;
+        sb.classList.add('show');
+
+        clearTimeout(snackTimer);
+        snackTimer = setTimeout(hideSnackbar, 4200);
+    }
+
+    function hideSnackbar() {
+        document.getElementById('snackbar').classList.remove('show');
+        clearTimeout(snackTimer);
+    }
+
     // Form submit
     function handleSubmit(e) {
         e.preventDefault();
-        alert('Thank you! Your message has been received. I will get back to you soon.');
+        showSnackbar();
         e.target.reset();
     }
 </script>
