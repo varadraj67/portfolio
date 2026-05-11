@@ -324,8 +324,9 @@
         @media (max-width: 768px) {
             nav {
                 top: auto;
-                bottom: 24px;
+                bottom: 20px;
                 pointer-events: none;
+                padding: 0;
             }
             nav.scrolled {
                 padding: 0;
@@ -334,15 +335,20 @@
                 border-bottom: none;
                 box-shadow: none;
             }
+            /* Mobile logo: fixed top center, always visible */
+            #mobile-logo {
+                display: flex;
+                justify-content: center;
+            }
             .nav-logo-top {
                 position: fixed;
-                top: 20px;
+                top: 16px;
                 left: 50%;
                 transform: translateX(-50%);
-                z-index: 1000;
+                z-index: 200;
                 pointer-events: auto;
             }
-            .nav-desktop-logo { display: none; }
+            .nav-desktop-logo { display: none !important; }
             .nav-container-inner {
                 pointer-events: auto;
                 display: flex;
@@ -350,17 +356,30 @@
             }
             .nav-links-bar {
                 flex-direction: row;
-                background: rgba(255,255,255,0.9);
+                background: rgba(255,255,255,0.95);
                 backdrop-filter: blur(20px);
                 border: 1px solid rgba(196,181,253,0.4);
                 border-radius: 40px;
-                padding: 8px 10px;
-                box-shadow: 0 8px 32px rgba(109,40,217,0.15);
-                gap: 4px;
+                padding: 6px 8px;
+                box-shadow: 0 8px 32px rgba(109,40,217,0.18);
+                gap: 2px;
+            }
+            .nav-link-item {
+                padding: 10px 12px !important;
             }
             .nav-text-label { display: none; }
             .nav-link-item.active .nav-text-label { display: block; }
+            .nav-link-item.active {
+                padding: 10px 16px !important;
+            }
             .hero-section { padding-top: 110px; }
+
+            /* Snackbar: above bottom nav (nav is ~60px + 20px gap = 80px from bottom) */
+            #snackbar {
+                bottom: 100px;
+                min-width: 280px;
+                max-width: calc(100vw - 32px);
+            }
         }
 
         @media (min-width: 769px) {
@@ -500,16 +519,18 @@
 
 <body>
 
+<!-- Mobile-only logo: fixed top, outside nav -->
+<div id="mobile-logo" class="nav-logo-top">
+    <a href="#home">
+        <div class="bg-white border border-violet-200 rounded-2xl px-5 py-2 shadow-lg shadow-violet-100">
+            <span class="font-display text-2xl grad-text font-semibold">V.A.N.</span>
+        </div>
+    </a>
+</div>
+
 <!-- Navigation -->
 <nav id="navbar">
     <div class="max-w-6xl mx-auto px-6">
-        <!-- Mobile logo (top center) -->
-        <div class="nav-logo-top">
-            <div class="bg-white border border-violet-200 rounded-2xl px-5 py-2 shadow-lg shadow-violet-100">
-                <span class="font-display text-2xl grad-text font-semibold">V.A.N.</span>
-            </div>
-        </div>
-
         <div class="nav-container-inner flex items-center justify-between">
             <!-- Desktop logo -->
             <a href="#home" class="nav-desktop-logo flex items-center">
