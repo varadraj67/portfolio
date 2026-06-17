@@ -1,1078 +1,760 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Varadraj Arun Nalavade | Developer Portfolio</title>
-<meta name="description" content="Professional developer portfolio for Varadraj Arun Nalavade, a Computer Science student focused on web development, programming, and IT security." />
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
-
-<style>
-:root{
-    --bg:#f7f8fb;
-    --surface:#ffffff;
-    --surface-soft:#eef3f8;
-    --ink:#101828;
-    --muted:#5f6f85;
-    --line:#dbe3ee;
-    --brand:#0f766e;
-    --brand-dark:#0b5d57;
-    --accent:#b7791f;
-    --shadow:0 24px 70px rgba(16,24,40,.10);
-    --radius:8px;
-}
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    font-family:"Inter",system-ui,sans-serif;
-    background:var(--bg);
-    color:var(--ink);
-    overflow-x:hidden;
-}
-
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    background:
-        linear-gradient(rgba(16,24,40,.035) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(16,24,40,.035) 1px,transparent 1px);
-    background-size:48px 48px;
-    mask-image:linear-gradient(to bottom,black,transparent 78%);
-    z-index:-1;
-}
-
-a{
-    color:inherit;
-}
-
-img{
-    display:block;
-    max-width:100%;
-}
-
-#loader{
-    position:fixed;
-    inset:0;
-    background:var(--bg);
-    display:grid;
-    place-items:center;
-    z-index:99999;
-    transition:opacity .35s ease,visibility .35s ease;
-}
-
-#loader.hidden{
-    opacity:0;
-    visibility:hidden;
-}
-
-.loader-mark{
-    width:46px;
-    height:46px;
-    border:3px solid var(--line);
-    border-top-color:var(--brand);
-    border-radius:50%;
-    animation:spin .75s linear infinite;
-}
-
-@keyframes spin{
-    to{ transform:rotate(360deg); }
-}
-
-nav{
-    position:fixed;
-    inset:0 0 auto;
-    z-index:1000;
-    padding:18px 0;
-    transition:background .25s ease,border-color .25s ease,padding .25s ease;
-}
-
-nav.scrolled{
-    background:rgba(247,248,251,.88);
-    backdrop-filter:blur(18px);
-    border-bottom:1px solid rgba(219,227,238,.9);
-    padding:10px 0;
-}
-
-.nav-container,
-.container{
-    width:min(1160px,92vw);
-    margin:auto;
-}
-
-.nav-container{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:22px;
-}
-
-.logo{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    text-decoration:none;
-    font-weight:800;
-    letter-spacing:.08em;
-}
-
-.logo-mark{
-    width:38px;
-    height:38px;
-    display:grid;
-    place-items:center;
-    border-radius:var(--radius);
-    background:var(--ink);
-    color:white;
-    font-size:.82rem;
-}
-
-.nav-links{
-    display:flex;
-    align-items:center;
-    gap:4px;
-    padding:5px;
-    border:1px solid rgba(219,227,238,.9);
-    background:rgba(255,255,255,.72);
-    border-radius:999px;
-    box-shadow:0 12px 30px rgba(16,24,40,.05);
-}
-
-.nav-links a{
-    text-decoration:none;
-    color:var(--muted);
-    padding:10px 15px;
-    border-radius:999px;
-    font-size:.92rem;
-    font-weight:700;
-    transition:.2s ease;
-}
-
-.nav-links a:hover,
-.nav-links a.active{
-    color:var(--ink);
-    background:var(--surface-soft);
-}
-
-.hero{
-    min-height:100vh;
-    display:grid;
-    align-items:center;
-    padding:124px 0 64px;
-}
-
-.hero-grid{
-    display:grid;
-    grid-template-columns:1.1fr .9fr;
-    gap:56px;
-    align-items:center;
-}
-
-.eyebrow{
-    display:inline-flex;
-    align-items:center;
-    gap:10px;
-    color:var(--brand-dark);
-    font-weight:800;
-    margin-bottom:22px;
-    padding:8px 12px;
-    border:1px solid rgba(15,118,110,.18);
-    background:rgba(255,255,255,.75);
-    border-radius:999px;
-}
-
-.eyebrow::before{
-    content:"";
-    width:9px;
-    height:9px;
-    border-radius:50%;
-    background:#16a34a;
-    box-shadow:0 0 0 6px rgba(22,163,74,.12);
-}
-
-h1,
-h2{
-    font-family:"Playfair Display",Georgia,serif;
-    letter-spacing:0;
-}
-
-.hero h1{
-    max-width:780px;
-    font-size:clamp(3.4rem,8vw,6.8rem);
-    line-height:.96;
-    margin-bottom:24px;
-}
-
-.hero h1 span,
-.section-title h2 span{
-    color:var(--brand);
-}
-
-.hero-copy{
-    max-width:650px;
-    color:var(--muted);
-    font-size:1.1rem;
-    line-height:1.85;
-    margin-bottom:34px;
-}
-
-.hero-actions{
-    display:flex;
-    gap:14px;
-    flex-wrap:wrap;
-    margin-bottom:34px;
-}
-
-.btn{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    gap:10px;
-    min-height:48px;
-    padding:0 20px;
-    border:1px solid transparent;
-    border-radius:var(--radius);
-    text-decoration:none;
-    font-weight:800;
-    cursor:pointer;
-    transition:transform .2s ease,box-shadow .2s ease,background .2s ease,border-color .2s ease;
-}
-
-.btn:hover{
-    transform:translateY(-2px);
-}
-
-.btn-primary{
-    background:var(--brand);
-    color:white;
-    box-shadow:0 16px 36px rgba(15,118,110,.24);
-}
-
-.btn-primary:hover{
-    background:var(--brand-dark);
-}
-
-.btn-secondary{
-    background:white;
-    border-color:var(--line);
-    color:var(--ink);
-}
-
-.stats{
-    display:grid;
-    grid-template-columns:repeat(3,minmax(0,1fr));
-    gap:12px;
-    max-width:620px;
-}
-
-.stat{
-    padding:18px;
-    background:rgba(255,255,255,.78);
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-}
-
-.stat strong{
-    display:block;
-    font-size:1.45rem;
-}
-
-.stat span{
-    color:var(--muted);
-    font-size:.86rem;
-    font-weight:700;
-}
-
-.profile-panel{
-    position:relative;
-}
-
-.profile-card{
-    overflow:hidden;
-    background:var(--surface);
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    box-shadow:var(--shadow);
-}
-
-.profile-card img{
-    width:100%;
-    aspect-ratio:4/5;
-    object-fit:cover;
-}
-
-.profile-caption{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:20px;
-    padding:20px;
-}
-
-.profile-caption p{
-    color:var(--muted);
-    line-height:1.5;
-}
-
-.status-pill{
-    white-space:nowrap;
-    color:var(--brand-dark);
-    background:#e6f5f2;
-    padding:8px 10px;
-    border-radius:999px;
-    font-weight:800;
-    font-size:.82rem;
-}
-
-section{
-    padding:98px 0;
-}
-
-.section-title{
-    display:flex;
-    align-items:end;
-    justify-content:space-between;
-    gap:30px;
-    margin-bottom:36px;
-}
-
-.section-title small{
-    display:block;
-    color:var(--brand-dark);
-    font-weight:800;
-    text-transform:uppercase;
-    letter-spacing:.12em;
-    margin-bottom:10px;
-}
-
-.section-title h2{
-    font-size:clamp(2.3rem,5vw,4.3rem);
-    line-height:1;
-}
-
-.section-title p{
-    max-width:420px;
-    color:var(--muted);
-    line-height:1.75;
-}
-
-.grid{
-    display:grid;
-    gap:18px;
-}
-
-.grid-2{
-    grid-template-columns:repeat(2,minmax(0,1fr));
-}
-
-.grid-3{
-    grid-template-columns:repeat(3,minmax(0,1fr));
-}
-
-.card{
-    background:rgba(255,255,255,.86);
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:26px;
-    box-shadow:0 14px 35px rgba(16,24,40,.06);
-    transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
-}
-
-.card:hover{
-    transform:translateY(-5px);
-    border-color:rgba(15,118,110,.28);
-    box-shadow:var(--shadow);
-}
-
-.card-icon{
-    width:46px;
-    height:46px;
-    display:grid;
-    place-items:center;
-    border-radius:var(--radius);
-    background:#e6f5f2;
-    color:var(--brand-dark);
-    font-size:1.25rem;
-    margin-bottom:18px;
-}
-
-.card h3{
-    font-size:1.22rem;
-    margin-bottom:10px;
-}
-
-.card p{
-    color:var(--muted);
-    line-height:1.75;
-}
-
-.timeline{
-    display:grid;
-    gap:16px;
-}
-
-.timeline-item{
-    display:grid;
-    grid-template-columns:150px 1fr;
-    gap:22px;
-    padding:22px;
-    background:white;
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-}
-
-.timeline-item time{
-    color:var(--accent);
-    font-weight:800;
-}
-
-.skills{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-    margin-top:18px;
-}
-
-.skill{
-    padding:9px 12px;
-    border:1px solid var(--line);
-    border-radius:999px;
-    background:white;
-    color:var(--ink);
-    font-size:.88rem;
-    font-weight:800;
-}
-
-.project-card{
-    overflow:hidden;
-    padding:0;
-}
-
-.project-card img{
-    width:100%;
-    aspect-ratio:16/10;
-    object-fit:cover;
-}
-
-.project-body{
-    padding:24px;
-}
-
-.project-meta{
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-    margin-top:18px;
-}
-
-.project-meta span{
-    color:var(--brand-dark);
-    background:#e6f5f2;
-    padding:7px 9px;
-    border-radius:999px;
-    font-size:.78rem;
-    font-weight:800;
-}
-
-.contact-layout{
-    display:grid;
-    grid-template-columns:.85fr 1.15fr;
-    gap:18px;
-}
-
-.contact-list{
-    display:grid;
-    gap:12px;
-}
-
-.contact-row{
-    display:flex;
-    align-items:center;
-    gap:14px;
-    padding:18px;
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    background:white;
-    text-decoration:none;
-    transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease;
-}
-
-a.contact-row:hover{
-    transform:translateY(-2px);
-    border-color:rgba(15,118,110,.28);
-    box-shadow:0 14px 35px rgba(16,24,40,.06);
-}
-
-.contact-row i{
-    width:42px;
-    height:42px;
-    display:grid;
-    place-items:center;
-    border-radius:var(--radius);
-    background:var(--ink);
-    color:white;
-}
-
-.contact-row p{
-    color:var(--muted);
-    margin-top:3px;
-}
-
-form{
-    display:grid;
-    gap:14px;
-}
-
-.form-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:14px;
-}
-
-input,
-textarea{
-    width:100%;
-    min-height:50px;
-    padding:14px 15px;
-    border-radius:var(--radius);
-    border:1px solid var(--line);
-    background:white;
-    color:var(--ink);
-    font:inherit;
-}
-
-textarea{
-    min-height:142px;
-    resize:vertical;
-}
-
-input:focus,
-textarea:focus{
-    outline:3px solid rgba(15,118,110,.16);
-    border-color:var(--brand);
-}
-
-footer{
-    padding:34px 0;
-    border-top:1px solid var(--line);
-    color:var(--muted);
-}
-
-.footer-inner{
-    display:flex;
-    justify-content:space-between;
-    gap:20px;
-    flex-wrap:wrap;
-    font-weight:700;
-}
-
-#snackbar{
-    position:fixed;
-    left:50%;
-    bottom:28px;
-    transform:translateX(-50%) translateY(24px);
-    display:flex;
-    align-items:center;
-    gap:12px;
-    width:min(430px,calc(100vw - 32px));
-    padding:16px;
-    background:white;
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    box-shadow:var(--shadow);
-    opacity:0;
-    pointer-events:none;
-    transition:.25s ease;
-    z-index:9999;
-}
-
-#snackbar.show{
-    opacity:1;
-    transform:translateX(-50%) translateY(0);
-}
-
-#snackbar i{
-    color:var(--brand);
-    font-size:1.45rem;
-}
-
-#snackbar p{
-    color:var(--muted);
-    margin-top:2px;
-}
-
-.reveal{
-    opacity:0;
-    transform:translateY(24px);
-    transition:opacity .7s ease,transform .7s ease;
-}
-
-.reveal.active{
-    opacity:1;
-    transform:translateY(0);
-}
-
-@media(max-width:900px){
-    .hero-grid,
-    .grid-2,
-    .grid-3,
-    .contact-layout{
-        grid-template-columns:1fr;
-    }
-
-    .section-title{
-        display:block;
-    }
-
-    .section-title p{
-        margin-top:14px;
-    }
-
-    .profile-panel{
-        max-width:560px;
-    }
-}
-
-@media(max-width:720px){
-    nav{
-        padding:10px 0;
-    }
-
-    .nav-container{
-        align-items:flex-start;
-    }
-
-    .nav-links{
-        position:fixed;
-        left:65%;
-        transform:translateX(-50%);
-        justify-content:space-between;
-        overflow-x:auto;
-    }
-
-    .nav-links a{
-        flex:1;
-        text-align:center;
-        padding:10px 8px;
-        font-size:.78rem;
-    }
-
-    .hero{
-        padding-top:106px;
-        padding-bottom:36px;
-    }
-
-    .hero h1{
-        font-size:clamp(3rem,16vw,4.5rem);
-    }
-
-    .stats,
-    .form-grid{
-        grid-template-columns:1fr;
-    }
-
-    .timeline-item{
-        grid-template-columns:1fr;
-        gap:8px;
-    }
-
-    .profile-caption{
-        display:block;
-    }
-
-    .status-pill{
-        display:inline-block;
-        margin-top:14px;
-    }
-
-    section{
-        padding:72px 0;
-    }
-
-    .btn{
-        width:100%;
-    }
-
-    footer{
-        padding-bottom:92px;
-    }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Varadraj | Software Developer</title>
+    <meta name="description" content="Portfolio of Varadraj - Software Developer, Frontend Developer, and .NET Developer.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        darkBg: '#0f172a',
+                        darkCard: '#1e293b',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Styles & Glassmorphism */
+        body { font-family: 'Poppins', sans-serif; }
+        
+        /* Sunset Gradient Text */
+        .text-sunset {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(to right, #ec4899, #a855f7, #f97316);
+        }
+        
+        /* Sunset Gradient Background */
+        .bg-sunset {
+            background-image: linear-gradient(to right, #ec4899, #a855f7, #f97316);
+        }
+
+        /* Glassmorphism Classes */
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .dark .glass {
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -5px rgba(168, 85, 247, 0.15);
+            border-color: rgba(168, 85, 247, 0.3);
+        }
+
+        /* Preloader */
+        #preloader {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease;
+        }
+        .dark #preloader { background: #0f172a; }
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(168, 85, 247, 0.2);
+            border-top-color: #a855f7;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        /* Animated Blobs for Hero Background */
+        .blob {
+            position: absolute;
+            filter: blur(60px);
+            z-index: -1;
+            opacity: 0.5;
+            animation: float 10s infinite ease-in-out alternate;
+        }
+        @keyframes float {
+            0% { transform: translate(0px, 0px) scale(1); }
+            100% { transform: translate(30px, -50px) scale(1.1); }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #a855f7; border-radius: 4px; }
+    </style>
 </head>
+<body class="bg-slate-50 text-slate-800 dark:bg-darkBg dark:text-slate-200 transition-colors duration-300">
 
-<body>
-<div id="loader" aria-hidden="true">
-    <div class="loader-mark"></div>
-</div>
-
-<nav id="navbar">
-    <div class="nav-container">
-        <a class="logo" href="#home" aria-label="Varadraj Arun Nalavade home">
-            <span class="logo-mark">VAN</span>
-            <span>Varadraj</span>
-        </a>
-
-        <div class="nav-links" aria-label="Primary navigation">
-            <a href="#home" class="active">Home</a>
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Work</a>
-            <a href="#contact">Contact</a>
-        </div>
+    <div id="preloader">
+        <div class="spinner"></div>
     </div>
-</nav>
 
-<main>
-    <section class="hero" id="home">
-        <div class="container hero-grid">
-            <div class="reveal">
-                <div class="eyebrow">Computer Science student from Sangli, Maharashtra</div>
-                <h1>I'm Varadraj, building <span>secure, elegant</span> web experiences.</h1>
-                <p class="hero-copy">
-                    I am passionate about web development, programming, and IT security. I enjoy creating full-stack applications that are functional, beautifully designed, and user-centric.
+    <nav class="fixed w-full z-50 glass transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="#" class="text-2xl font-bold text-sunset">Varadraj.</a>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="nav-link font-medium hover:text-purple-500 transition-colors">Home</a>
+                    <a href="#about" class="nav-link font-medium hover:text-purple-500 transition-colors">About</a>
+                    <a href="#education" class="nav-link font-medium hover:text-purple-500 transition-colors">Education</a>
+                    <a href="#experience" class="nav-link font-medium hover:text-purple-500 transition-colors">Experience</a>
+                    <a href="#projects" class="nav-link font-medium hover:text-purple-500 transition-colors">Projects</a>
+                    <button id="theme-toggle" class="p-2 rounded-full glass hover:bg-slate-200 dark:hover:bg-slate-700 transition">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:block text-yellow-400"></i>
+                    </button>
+                </div>
+
+                <div class="md:hidden flex items-center space-x-4">
+                    <button id="theme-toggle-mobile" class="p-2 rounded-full glass">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:block text-yellow-400"></i>
+                    </button>
+                    <button id="mobile-menu-btn" class="text-2xl focus:outline-none">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="mobile-menu" class="hidden md:hidden glass border-t border-slate-200 dark:border-slate-700 absolute w-full">
+            <div class="px-4 pt-2 pb-4 space-y-1 flex flex-col">
+                <a href="#home" class="block px-3 py-2 rounded-md font-medium hover:bg-slate-100 dark:hover:bg-slate-800">Home</a>
+                <a href="#about" class="block px-3 py-2 rounded-md font-medium hover:bg-slate-100 dark:hover:bg-slate-800">About</a>
+                <a href="#education" class="block px-3 py-2 rounded-md font-medium hover:bg-slate-100 dark:hover:bg-slate-800">Education</a>
+                <a href="#experience" class="block px-3 py-2 rounded-md font-medium hover:bg-slate-100 dark:hover:bg-slate-800">Experience</a>
+                <a href="#projects" class="block px-3 py-2 rounded-md font-medium hover:bg-slate-100 dark:hover:bg-slate-800">Projects</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        <div class="blob bg-pink-400 w-96 h-96 rounded-full top-20 -left-20"></div>
+        <div class="blob bg-purple-500 w-96 h-96 rounded-full bottom-10 right-10" style="animation-delay: 2s;"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10 relative">
+            <div class="flex flex-col-reverse md:flex-row items-center gap-12">
+                
+                <div class="w-full md:w-1/2" data-aos="fade-right">
+                    <p class="text-lg font-medium text-purple-600 dark:text-purple-400 mb-2">Hello, I am</p>
+                    <h1 class="text-5xl md:text-7xl font-bold mb-4 text-slate-900 dark:text-white">
+                        Varadraj
+                    </h1>
+                    <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-sunset">
+                        Software Developer | Frontend Developer | .NET Developer
+                    </h2>
+                    <p class="text-lg text-slate-600 dark:text-slate-300 mb-8 leading-relaxed">
+                        Crafting premium, scalable web applications with clean code and modern aesthetics. Passionate about transforming complex problems into elegant, user-centric solutions.
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-4 mb-8">
+                        <!-- <a href="#" class="px-8 py-3 rounded-full bg-sunset text-white font-medium hover:shadow-lg hover:shadow-purple-500/30 transition-all transform hover:-translate-y-1">
+                            Download Resume
+                        </a> -->
+                        <a href="varadraj_Resume (1).pdf" download="Varadraj_Resume.pdf" class="px-8 py-3 rounded-full bg-sunset text-white font-medium hover:shadow-lg hover:shadow-purple-500/30 transition-all transform hover:-translate-y-1">
+                        Download Resume
+                        </a>
+                        <a href="#contact" class="px-8 py-3 rounded-full glass font-medium hover:bg-slate-100 dark:hover:bg-slate-800 transition-all transform hover:-translate-y-1 border-purple-500/50">
+                            Contact Me
+                        </a>
+                    </div>
+
+                    <div class="flex space-x-6 text-2xl">
+                        <a href="https://github.com/" class="text-slate-600 hover:text-purple-500 dark:text-slate-400 dark:hover:text-purple-400 transition-colors"><i class="fab fa-github"></i></a>
+                        <a href="#" class="text-slate-600 hover:text-purple-500 dark:text-slate-400 dark:hover:text-purple-400 transition-colors"><i class="fab fa-linkedin"></i></a>
+                        <a href="mailto:varadrajn711@gmail.com" class="text-slate-600 hover:text-purple-500 dark:text-slate-400 dark:hover:text-purple-400 transition-colors"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+
+                <div class="w-full md:w-1/2 flex justify-center" data-aos="fade-left">
+                    <div class="relative w-72 h-72 md:w-96 md:h-96">
+                        <div class="absolute inset-0 bg-sunset rounded-full blur-2xl opacity-40 animate-pulse"></div>
+                        <img src="myphoto.jpg" alt="Varadraj Profile" class="relative z-10 w-full h-full object-cover rounded-full border-4 border-white dark:border-slate-800 shadow-2xl">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold mb-4">About <span class="text-sunset">Me</span></h2>
+                <div class="w-20 h-1 bg-sunset mx-auto rounded-full"></div>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-12 items-center">
+                <div class="w-full lg:w-1/2" data-aos="fade-right">
+                    <p class="text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+                        I am a dedicated Software Developer with a Bachelor of Computer Science. My approach to development is rooted in a robust "trial and error" philosophy—I believe the most effective way to master problem-solving is by actively diving into the code, iterating through mistakes, and refining until the solution is flawless.
+                    </p>
+                    <p class="text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+                        I thrive in structured, on-site corporate environments where I can collaborate directly with peers, absorb collective knowledge, and drive projects forward. Looking ahead, my career goal is to leverage my technical expertise and collaborative spirit to evolve into a Team Lead role, guiding developers to build ultra-premium digital products.
+                    </p>
+                </div>
+                
+                <div class="w-full lg:w-1/2 grid grid-cols-2 gap-6" data-aos="fade-left">
+                    <div class="glass glass-card p-6 rounded-2xl text-center transition-all duration-300">
+                        <i class="fas fa-code text-4xl text-pink-500 mb-4"></i>
+                        <h3 class="text-3xl font-bold text-slate-800 dark:text-white mb-2 counter" data-target="20">5</h3>
+                        <p class="text-sm text-slate-500 dark:text-slate-400">Projects Completed</p>
+                    </div>
+                    <div class="glass glass-card p-6 rounded-2xl text-center transition-all duration-300">
+                        <i class="fas fa-award text-4xl text-purple-500 mb-4"></i>
+                        <h3 class="text-3xl font-bold text-slate-800 dark:text-white mb-2 counter" data-target="3">3</h3>
+                        <p class="text-sm text-slate-500 dark:text-slate-400">Certifications</p>
+                    </div>
+                    <!-- <div class="glass glass-card p-6 rounded-2xl text-center transition-all duration-300">
+                        <i class="fas fa-clock text-4xl text-orange-500 mb-4"></i>
+                        <h3 class="text-3xl font-bold text-slate-800 dark:text-white mb-2 counter" data-target="2000">0</h3>
+                        <p class="text-sm text-slate-500 dark:text-slate-400">Hours of Coding</p>
+                    </div>
+                    <div class="glass glass-card p-6 rounded-2xl text-center transition-all duration-300">
+                        <i class="fas fa-coffee text-4xl text-pink-500 mb-4"></i>
+                        <h3 class="text-3xl font-bold text-slate-800 dark:text-white mb-2 counter" data-target="150">0</h3>
+                        <p class="text-sm text-slate-500 dark:text-slate-400">Cups of Coffee</p>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="py-20 bg-slate-100/50 dark:bg-slate-800/20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold mb-4">Educational <span class="text-sunset">Journey</span></h2>
+                <div class="w-20 h-1 bg-sunset mx-auto rounded-full"></div>
+            </div>
+
+            <div class="relative border-l-4 border-purple-500 ml-3 md:ml-0 md:mx-auto space-y-12">
+                
+                <div class="relative pl-8 md:pl-0" data-aos="fade-up">
+                    <div class="md:w-1/2 md:ml-auto md:pl-12 relative">
+                        <div class="absolute -left-10 md:-left-4 top-0 w-6 h-6 bg-sunset rounded-full border-4 border-white dark:border-darkBg shadow"></div>
+                        <div class="glass glass-card p-6 rounded-2xl">
+                            <span class="text-sm font-bold text-purple-500 bg-purple-100 dark:bg-purple-900/30 px-3 py-1 rounded-full mb-3 inline-block">Year - Present</span>
+                            <h3 class="text-xl font-bold mb-1">Bachelor of Computer Science </h3>
+                            <h4 class="text-lg text-slate-600 dark:text-slate-300 font-medium mb-2">willingdon college sangli</h4>
+                            <p class="text-slate-500 dark:text-slate-400">CGPA: 8.5 / 10</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative pl-8 md:pl-0" data-aos="fade-up" data-aos-delay="100">
+                    <div class="md:w-1/2 md:pr-12 text-left md:text-right relative">
+                        <div class="absolute -left-10 md:left-auto md:-right-3 top-0 w-6 h-6 bg-sunset rounded-full border-4 border-white dark:border-darkBg shadow"></div>
+                        <div class="glass glass-card p-6 rounded-2xl">
+                            <span class="text-sm font-bold text-pink-500 bg-pink-100 dark:bg-pink-900/30 px-3 py-1 rounded-full mb-3 inline-block">Year</span>
+                            <h3 class="text-xl font-bold mb-1">Higher Secondary Certificate (HSC)</h3>
+                            <h4 class="text-lg text-slate-600 dark:text-slate-300 font-medium mb-2">G.A.High school and junior College sangli</h4>
+                            <p class="text-slate-500 dark:text-slate-400">Percentage: 61.67%</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative pl-8 md:pl-0" data-aos="fade-up" data-aos-delay="200">
+                    <div class="md:w-1/2 md:ml-auto md:pl-12 relative">
+                        <div class="absolute -left-10 md:-left-4 top-0 w-6 h-6 bg-sunset rounded-full border-4 border-white dark:border-darkBg shadow"></div>
+                        <div class="glass glass-card p-6 rounded-2xl">
+                            <span class="text-sm font-bold text-orange-500 bg-orange-100 dark:bg-orange-900/30 px-3 py-1 rounded-full mb-3 inline-block">Year</span>
+                            <h3 class="text-xl font-bold mb-1">Secondary School Certificate (SSC)</h3>
+                            <h4 class="text-lg text-slate-600 dark:text-slate-300 font-medium mb-2">G.A.High School Sangli</h4>
+                            <p class="text-slate-500 dark:text-slate-400">Percentage: 87%</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold mb-4">Technical <span class="text-sunset">Arsenal</span></h2>
+                <div class="w-20 h-1 bg-sunset mx-auto rounded-full mb-6"></div>
+                <p class="text-slate-600 dark:text-slate-400">Tools, languages, and technologies I utilize to bring ideas to life.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <div class="glass glass-card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="0">
+                    <div class="w-14 h-14 rounded-full bg-pink-100 dark:bg-pink-900/30 flex items-center justify-center mb-6">
+                        <i class="fab fa-html5 text-2xl text-pink-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 border-b border-slate-200 dark:border-slate-700 pb-2">Frontend</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-center"><i class="fas fa-check text-pink-500 mr-2 text-sm"></i> HTML5</li>
+                        <li class="flex items-center"><i class="fas fa-check text-pink-500 mr-2 text-sm"></i> CSS3 / Tailwind CSS</li>
+                        <li class="flex items-center"><i class="fas fa-check text-pink-500 mr-2 text-sm"></i> JavaScript (ES6+)</li>
+                        <li class="flex items-center"><i class="fas fa-check text-pink-500 mr-2 text-sm"></i> Bootstrap</li>
+                    </ul>
+                </div>
+
+                <div class="glass glass-card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-14 h-14 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center mb-6">
+                        <i class="fas fa-server text-2xl text-purple-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 border-b border-slate-200 dark:border-slate-700 pb-2">Backend</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-center"><i class="fas fa-check text-purple-500 mr-2 text-sm"></i>PHP</li>
+                        <li class="flex items-center"><i class="fas fa-check text-purple-500 mr-2 text-sm"></i> ASP.NET</li>
+                        <li class="flex items-center"><i class="fas fa-check text-purple-500 mr-2 text-sm"></i> .NET Core</li>
+                    </ul>
+                </div>
+
+                <div class="glass glass-card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-14 h-14 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center mb-6">
+                        <i class="fas fa-database text-2xl text-orange-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 border-b border-slate-200 dark:border-slate-700 pb-2">Database</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-center"><i class="fas fa-check text-orange-500 mr-2 text-sm"></i> SQL Server</li>
+                        <li class="flex items-center"><i class="fas fa-check text-orange-500 mr-2 text-sm"></i> MySQL</li>
+                    </ul>
+                </div>
+
+                <div class="glass glass-card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-14 h-14 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mb-6">
+                        <i class="fas fa-tools text-2xl text-blue-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 border-b border-slate-200 dark:border-slate-700 pb-2">Tools & Soft Skills</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-center"><i class="fas fa-check text-blue-500 mr-2 text-sm"></i> Git / GitHub</li>
+                        <li class="flex items-center"><i class="fas fa-check text-blue-500 mr-2 text-sm"></i> VS & VS Code</li>
+                        <li class="flex items-center mt-4 pt-2 border-t border-slate-200 dark:border-slate-700"><i class="fas fa-star text-yellow-500 mr-2 text-sm"></i> Problem Solving</li>
+                        <li class="flex items-center"><i class="fas fa-star text-yellow-500 mr-2 text-sm"></i> Leadership & Teamwork</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="py-20 bg-slate-100/50 dark:bg-slate-800/20">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold mb-4">Professional <span class="text-sunset">Experience</span></h2>
+                <div class="w-20 h-1 bg-sunset mx-auto rounded-full"></div>
+            </div>
+
+            <div class="glass glass-card p-8 rounded-3xl relative overflow-hidden" data-aos="fade-up">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-sunset opacity-10 rounded-bl-full"></div>
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-1">Freelance Frontend Developer</h3>
+                        <p class="text-lg text-purple-600 dark:text-purple-400 font-medium">Self-Employed</p>
+                    </div>
+                    <!-- <span class="mt-2 md:mt-0 px-4 py-2 rounded-full glass text-sm font-medium">Present</span> -->
+                </div>
+                
+                <h4 class="text-xl font-semibold mb-3">Featured Project: Import Export website</h4>
+                <p class="text-slate-600 dark:text-slate-300 mb-6">
+                    Designed and developed high-end, responsive web applications prioritizing modern glassmorphism UI, smooth animations, and optimized load times. Leveraged a trial-and-error approach to implement complex interactive features seamlessly.
                 </p>
-
-                <div class="hero-actions">
-                    <a href="#projects" class="btn btn-primary"><i class="bi bi-grid-1x2-fill"></i> View Work</a>
-                    <a href="https://github.com/varadraj67" target="_blank" rel="noopener noreferrer" class="btn btn-secondary"><i class="bi bi-github"></i> GitHub</a>
+                
+                <div class="mb-6">
+                    <h5 class="font-semibold mb-2">Key Responsibilities:</h5>
+                    <ul class="list-disc list-inside text-slate-600 dark:text-slate-300 space-y-2">
+                        <li>Translating client requirements into ultra-premium visual layouts.</li>
+                        <li>Implementing mobile-first design principles using modern CSS frameworks.</li>
+                        <li>Ensuring cross-browser compatibility and SEO optimization.</li>
+                    </ul>
                 </div>
 
-                <div class="stats" aria-label="Portfolio highlights">
-                    <div class="stat">
-                        <strong>12+</strong>
-                        <span>Projects completed</span>
-                    </div>
-                    <div class="stat">
-                        <strong>4</strong>
-                        <span>Areas of focus</span>
-                    </div>
-                    <div class="stat">
-                        <strong>100%</strong>
-                        <span>Responsive layouts</span>
-                    </div>
+                <div class="flex flex-wrap gap-2 mb-6">
+                    <span class="px-3 py-1 rounded-md bg-slate-200 dark:bg-slate-700 text-sm">HTML/CSS</span>
+                    <span class="px-3 py-1 rounded-md bg-slate-200 dark:bg-slate-700 text-sm">JavaScript</span>
+                    <span class="px-3 py-1 rounded-md bg-slate-200 dark:bg-slate-700 text-sm">Tailwind CSS</span>
                 </div>
+
+                <a href="https://rawmatz.com/" class="inline-flex items-center px-6 py-2 rounded-full bg-sunset text-white font-medium hover:shadow-lg hover:-translate-y-1 transition-all">
+                    View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold mb-4">Featured <span class="text-sunset">Projects</span></h2>
+                <div class="w-20 h-1 bg-sunset mx-auto rounded-full mb-6"></div>
             </div>
 
-            <div class="profile-panel reveal">
-                <div class="profile-card">
-                    <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=85" alt="Modern developer workspace with laptop and desk setup">
-                    <div class="profile-caption">
-                        <div>
-                            <h2>Varadraj Arun Nalavade</h2>
-                            <p>Computer Science student focused on full-stack development and IT security.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <div class="glass glass-card rounded-2xl overflow-hidden group flex flex-col" data-aos="fade-up" data-aos-delay="0">
+                    <div class="relative overflow-hidden h-48">
+                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Freelance Project" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4">
+                            <span class="px-3 py-1 bg-pink-500 text-white text-xs rounded-full">Freelance</span>
                         </div>
-                        <span class="status-pill">Open to work</span>
                     </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="text-xl font-bold mb-2">Corporate Business Site</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-4 flex-grow">
+                            A premium, fully responsive website featuring dynamic hover effects, smooth scroll animations, and a modern aesthetic built for a corporate client.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs font-semibold px-2 py-1 rounded bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400">Tailwind</span>
+                            <span class="text-xs font-semibold px-2 py-1 rounded bg-pink-100 text-pink-600 dark:bg-pink-900/30 dark:text-pink-400">JavaScript</span>
+                        </div>
+                        <div class="flex gap-4 mt-auto">
+                            <a href="https://varadraj67.github.io/varadraj/" class="flex-1 text-center py-2 rounded-lg bg-sunset text-white font-medium hover:shadow-lg transition">Demo</a>
+                            <a href="#" class="flex-1 text-center py-2 rounded-lg glass font-medium hover:bg-slate-100 dark:hover:bg-slate-700 transition">Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass glass-card rounded-2xl overflow-hidden group flex flex-col" data-aos="fade-up" data-aos-delay="100">
+                    <div class="relative overflow-hidden h-48">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="College Project 1" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4">
+                            <span class="px-3 py-1 bg-purple-500 text-white text-xs rounded-full">College Project</span>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="text-xl font-bold mb-2">NEP 2020 portal</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-4 flex-grow">
+                            Designed an <strong>AI intigrated</strong> digital learning portal focused on modernizing education management.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs font-semibold px-2 py-1 rounded bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400">ASP.NET</span>
+                            <span class="text-xs font-semibold px-2 py-1 rounded bg-orange-100 text-orange-600 dark:bg-orange-900/30 dark:text-orange-400">SQL Server</span>
+                        </div>
+                        <div class="flex gap-4 mt-auto">
+                            <a href="https://avitorx.fwh.is/" class="flex-1 text-center py-2 rounded-lg bg-sunset text-white font-medium hover:shadow-lg transition">Demo</a>
+                            <a href="#" class="flex-1 text-center py-2 rounded-lg glass font-medium hover:bg-slate-100 dark:hover:bg-slate-700 transition">Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass glass-card rounded-2xl overflow-hidden group flex flex-col" data-aos="fade-up" data-aos-delay="200">
+                    <div class="relative overflow-hidden h-48">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="College Project 2" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4">
+                            <span class="px-3 py-1 bg-purple-500 text-white text-xs rounded-full">College Project</span>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="text-xl font-bold mb-2">MyBank</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-4 flex-grow">
+                           Developed a dynamic Expense Tracker web application featuring real-time transaction management, 
+                            balance analytics, and responsive UI design 
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs font-semibold px-2 py-1 rounded bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400">C#</span>
+                            <span class="text-xs font-semibold px-2 py-1 rounded bg-yellow-100 text-yellow-600 dark:bg-yellow-900/30 dark:text-yellow-400">JavaScript</span>
+                        </div>
+                        <div class="flex gap-4 mt-auto">
+                            <a href="https://omrar.gt.tc/" class="flex-1 text-center py-2 rounded-lg bg-sunset text-white font-medium hover:shadow-lg transition">Demo</a>
+                            <a href="#" class="flex-1 text-center py-2 rounded-lg glass font-medium hover:bg-slate-100 dark:hover:bg-slate-700 transition">Code</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="achievements" class="py-20 bg-slate-100/50 dark:bg-slate-800/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold mb-4">Milestones & <span class="text-sunset">Certifications</span></h2>
+                <div class="w-20 h-1 bg-sunset mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="glass glass-card p-8 rounded-2xl" data-aos="fade-right">
+                    <h3 class="text-2xl font-bold mb-6 flex items-center"><i class="fas fa-certificate text-pink-500 mr-3"></i> Certifications</h3>
+                    <ul class="space-y-4 relative border-l-2 border-slate-200 dark:border-slate-700 ml-3">
+                        <li class="pl-6 relative">
+                            <div class="absolute w-3 h-3 bg-pink-500 rounded-full -left-[7px] top-1.5"></div>
+                            <h4 class="font-bold">IBM – AI Fundamentals Certification </h4>
+                            <p class="text-sm text-slate-500">IBM SkillBuild- 2026</p>
+                        </li>
+                        <li class="pl-6 relative">
+                            <div class="absolute w-3 h-3 bg-pink-500 rounded-full -left-[7px] top-1.5"></div>
+                            <h4 class="font-bold"> IBM – JavaScript By codecademy</h4>
+                            <p class="text-sm text-slate-500">codecademy - 2025</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="glass glass-card p-8 rounded-2xl" data-aos="fade-left">
+                    <h3 class="text-2xl font-bold mb-6 flex items-center"><i class="fas fa-trophy text-purple-500 mr-3"></i> Workshops & Events</h3>
+                    <ul class="space-y-4 relative border-l-2 border-slate-200 dark:border-slate-700 ml-3">
+                        <li class="pl-6 relative">
+                            <div class="absolute w-3 h-3 bg-purple-500 rounded-full -left-[7px] top-1.5"></div>
+                            <h4 class="font-bold">State-level Hackathon 4th Rank</h4>
+                            <p class="text-sm text-slate-500">Built a responsive web app prototype in 24 hours.</p>
+                        </li>
+                        <li class="pl-6 relative">
+                            <div class="absolute w-3 h-3 bg-purple-500 rounded-full -left-[7px] top-1.5"></div>
+                            <h4 class="font-bold">Modern UI/UX Workshop</h4>
+                            <p class="text-sm text-slate-500">Attended seminar on Glassmorphism and Web Animations.</p>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="about">
-        <div class="container">
-            <div class="section-title reveal">
-                <div>
-                    <small>About</small>
-                    <h2>Built with <span>curiosity</span></h2>
-                </div>
-                <p>My journey in tech started with curiosity about how things work. Today, I focus on building useful, secure, and well-designed applications.</p>
+    <section id="contact" class="py-20 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold mb-4">Get In <span class="text-sunset">Touch</span></h2>
+                <div class="w-20 h-1 bg-sunset mx-auto rounded-full mb-6"></div>
+                <p class="text-slate-600 dark:text-slate-400">Let's discuss how we can build something amazing together.</p>
             </div>
 
-            <div class="grid grid-2">
-                <article class="card reveal">
-                    <div class="card-icon"><i class="bi bi-window-stack"></i></div>
-                    <h3>Full-Stack Mindset</h3>
-                    <p>I like building applications from the interface to the data layer, making sure the final product is useful, reliable, and easy to use.</p>
-                </article>
-
-                <article class="card reveal">
-                    <div class="card-icon"><i class="bi bi-shield-lock-fill"></i></div>
-                    <h3>Security-Aware Development</h3>
-                    <p>With an interest in IT security, I think beyond appearance and functionality to build cleaner, safer, and more thoughtful digital systems.</p>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <section id="skills">
-        <div class="container">
-            <div class="section-title reveal">
-                <div>
-                    <small>Skills</small>
-                    <h2>Technical <span>toolkit</span></h2>
-                </div>
-                <p>A focused stack for modern websites, full-stack applications, authentication flows, and database-backed products.</p>
-            </div>
-
-            <div class="grid grid-3">
-                <article class="card reveal">
-                    <div class="card-icon"><i class="bi bi-code-slash"></i></div>
-                    <h3>Frontend</h3>
-                    <p>Responsive layouts, interactive components, and polished browser experiences.</p>
-                    <div class="skills">
-                        <span class="skill">HTML5</span>
-                        <span class="skill">CSS3</span>
-                        <span class="skill">JavaScript</span>
-                        <span class="skill">React</span>
-                        <span class="skill">Tailwind CSS</span>
-                    </div>
-                </article>
-
-                <article class="card reveal">
-                    <div class="card-icon"><i class="bi bi-database-fill-gear"></i></div>
-                    <h3>Backend & Data</h3>
-                    <p>Server-side features, data handling, authentication, and API integration.</p>
-                    <div class="skills">
-                        <span class="skill">Node.js</span>
-                        <span class="skill">PHP</span>
-                        <span class="skill">Firebase</span>
-                        <span class="skill">MySQL</span>
-                    </div>
-                </article>
-
-                <article class="card reveal">
-                    <div class="card-icon"><i class="bi bi-tools"></i></div>
-                    <h3>Tools & Security</h3>
-                    <p>Organized development habits with version control, UI planning, API tools, and security fundamentals.</p>
-                    <div class="skills">
-                        <span class="skill">GitHub</span>
-                        <span class="skill">VS Code</span>
-                        <span class="skill">Figma</span>
-                        <span class="skill">Postman</span>
-                        <span class="skill">IT Security</span>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <section id="experience">
-        <div class="container">
-            <div class="section-title reveal">
-                <div>
-                    <small>Process</small>
-                    <h2>How I <span>work</span></h2>
-                </div>
-                <p>Every project moves from clear requirements to thoughtful design, careful implementation, and final polish.</p>
-            </div>
-
-            <div class="timeline">
-                <div class="timeline-item reveal">
-                    <time>01. Discover</time>
-                    <div>
-                        <h3>Define the goal</h3>
-                        <p>I clarify the audience, core pages, important actions, and technical requirements before writing code.</p>
-                    </div>
-                </div>
-                <div class="timeline-item reveal">
-                    <time>02. Build</time>
-                    <div>
-                        <h3>Develop the interface</h3>
-                        <p>I create responsive layouts, reusable sections, accessible forms, and clean interactions.</p>
-                    </div>
-                </div>
-                <div class="timeline-item reveal">
-                    <time>03. Refine</time>
-                    <div>
-                        <h3>Polish and test</h3>
-                        <p>I review spacing, mobile behavior, loading states, and details that make the site feel professional.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects">
-        <div class="container">
-            <div class="section-title reveal">
-                <div>
-                    <small>Selected Work</small>
-                    <h2>Recent <span>projects</span></h2>
-                </div>
-                <p>A few examples of practical web products with clean UI, responsive screens, and useful feature sets.</p>
-            </div>
-
-            <div class="grid grid-3">
-                <article class="card project-card reveal">
-                    <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=900&q=85" alt="Banking and finance dashboard interface">
-                    <div class="project-body">
-                        <h3>MyBank</h3>
-                        <p>Secure Expence Tracker dashboard concept with authentication screens, account summaries, and responsive transaction views.</p>
-                        <div class="project-meta">
-                            <span>Dashboard</span>
-                            <span>Auth UI</span>
-                            <span>Responsive</span>
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="w-full lg:w-1/3 space-y-6" data-aos="fade-right">
+                    <div class="glass p-6 rounded-2xl flex items-center group hover:-translate-y-1 transition-transform">
+                        <div class="w-12 h-12 rounded-full bg-pink-100 dark:bg-pink-900/30 flex justify-center items-center mr-4 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-envelope text-pink-500 text-xl"></i>
                         </div>
-                    </div>
-                </article>
-
-                <article class="card project-card reveal">
-                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=85" alt="Students collaborating on an education platform">
-                    <div class="project-body">
-                        <h3>NEP Portal</h3>
-                        <p>Education portal with course discovery, student-focused content structure, and AI-assisted learning flow ideas.</p>
-                        <div class="project-meta">
-                            <span>Education</span>
-                            <span>Portal</span>
-                            <span>UX</span>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="card project-card reveal">
-                    <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=900&q=85" alt="Fitness training equipment in a gym">
-                    <div class="project-body">
-                        <h3>Powerfit Gym</h3>
-                        <p>Gym management website with membership sections, modern landing page visuals, and payment-ready interface patterns.</p>
-                        <div class="project-meta">
-                            <span>Fitness</span>
-                            <span>Landing Page</span>
-                            <span>Payments</span>
-                        </div>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact">
-        <div class="container">
-            <div class="section-title reveal">
-                <div>
-                    <small>Contact</small>
-                    <h2>Let's <span>connect</span></h2>
-                </div>
-                <p>Have a project, internship, or collaboration in mind? Send a message or connect with me on GitHub.</p>
-            </div>
-
-            <div class="contact-layout">
-                <div class="contact-list reveal">
-                    <div class="contact-row">
-                        <i class="bi bi-envelope-fill"></i>
                         <div>
-                            <h3>Email</h3>
-                            <p>varadrajnalavade711@email.com</p>
+                            <h4 class="text-sm text-slate-500 dark:text-slate-400 uppercase tracking-wider font-semibold">Email</h4>
+                            <p class="font-medium">varadrajn711@gmail.com</p>
                         </div>
                     </div>
-                    <a class="contact-row" href="https://github.com/varadraj67" target="_blank" rel="noopener noreferrer">
-                        <i class="bi bi-github"></i>
-                        <div>
-                            <h3>GitHub</h3>
-                            <p>github.com/varadraj67</p>
+                    <div class="glass p-6 rounded-2xl flex items-center group hover:-translate-y-1 transition-transform">
+                        <div class="w-12 h-12 rounded-full bg-purple-100 dark:bg-purple-900/30 flex justify-center items-center mr-4 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-phone-alt text-purple-500 text-xl"></i>
                         </div>
-                    </a>
-                    <div class="contact-row">
-                        <i class="bi bi-geo-alt-fill"></i>
                         <div>
-                            <h3>Location</h3>
-                            <p>Sangli, Maharashtra, India</p>
+                            <h4 class="text-sm text-slate-500 dark:text-slate-400 uppercase tracking-wider font-semibold">Phone</h4>
+                            <p class="font-medium">+91 8669050587</p>
                         </div>
                     </div>
-                    <div class="contact-row">
-                        <i class="bi bi-clock-fill"></i>
+                    <div class="glass p-6 rounded-2xl flex items-center group hover:-translate-y-1 transition-transform">
+                        <div class="w-12 h-12 rounded-full bg-orange-100 dark:bg-orange-900/30 flex justify-center items-center mr-4 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-map-marker-alt text-orange-500 text-xl"></i>
+                        </div>
                         <div>
-                            <h3>Response</h3>
-                            <p>Usually within 24 hours</p>
+                            <h4 class="text-sm text-slate-500 dark:text-slate-400 uppercase tracking-wider font-semibold">Location</h4>
+                            <p class="font-medium">Maharashtra, India</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="card reveal">
-                    <form id="contactForm">
-                        <div class="form-grid">
-                            <input type="text" name="name" placeholder="Your name" autocomplete="name" required>
-                            <input type="email" name="email" placeholder="Your email" autocomplete="email" required>
+                <div class="w-full lg:w-2/3" data-aos="fade-left">
+                    <form class="glass glass-card p-8 rounded-3xl space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Your Name</label>
+                                <input type="text" class="w-full px-4 py-3 rounded-lg bg-slate-50/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 focus:outline-none focus:border-purple-500 transition-colors" placeholder="John Doe">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Your Email</label>
+                                <input type="email" class="w-full px-4 py-3 rounded-lg bg-slate-50/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 focus:outline-none focus:border-purple-500 transition-colors" placeholder="john@example.com">
+                            </div>
                         </div>
-                        <input type="text" name="subject" placeholder="Project subject" required>
-                        <textarea name="message" placeholder="Tell me about the project" required></textarea>
-                        <button class="btn btn-primary" type="submit"><i class="bi bi-send-fill"></i> Send Message</button>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Subject</label>
+                            <input type="text" class="w-full px-4 py-3 rounded-lg bg-slate-50/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 focus:outline-none focus:border-purple-500 transition-colors" placeholder="Project Inquiry">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Message</label>
+                            <textarea rows="4" class="w-full px-4 py-3 rounded-lg bg-slate-50/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 focus:outline-none focus:border-purple-500 transition-colors" placeholder="Hello Varadraj..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-3 rounded-lg bg-sunset text-white font-medium hover:shadow-lg hover:-translate-y-1 transition-all">
+                            Send Message
+                        </button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
-</main>
 
-<footer>
-    <div class="container footer-inner">
-        <span>&copy; 2026 Varadraj Arun Nalavade</span>
-        <span>Designed and built with care.</span>
-    </div>
-</footer>
+    <footer class="glass border-t border-slate-200 dark:border-slate-800 pt-12 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-8 gap-6">
+                <a href="#" class="text-2xl font-bold text-sunset">Varadraj.</a>
+                
+                <div class="flex space-x-6">
+                    <a href="#home" class="text-slate-600 dark:text-slate-400 hover:text-purple-500 transition-colors">Home</a>
+                    <a href="#about" class="text-slate-600 dark:text-slate-400 hover:text-purple-500 transition-colors">About</a>
+                    <a href="#projects" class="text-slate-600 dark:text-slate-400 hover:text-purple-500 transition-colors">Projects</a>
+                    <a href="#contact" class="text-slate-600 dark:text-slate-400 hover:text-purple-500 transition-colors">Contact</a>
+                </div>
 
-<div id="snackbar" role="status" aria-live="polite">
-    <i class="bi bi-check-circle-fill"></i>
-    <div>
-        <strong>Message ready</strong>
-        <p>Thanks for reaching out. I will get back to you soon.</p>
-    </div>
-</div>
+                <div class="flex space-x-4">
+                    <a href="#" class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-sunset hover:text-white transition-all"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-sunset hover:text-white transition-all"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            
+            <div class="text-center border-t border-slate-200 dark:border-slate-700 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-slate-500 text-sm">© 2026 Varadraj. All rights reserved.</p>
+                <a href="#home" class="mt-4 md:mt-0 w-10 h-10 rounded-full bg-sunset text-white flex items-center justify-center hover:shadow-lg hover:-translate-y-1 transition-all">
+                    <i class="fas fa-arrow-up"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
 
-<script>
-const loader=document.getElementById("loader");
-const navbar=document.getElementById("navbar");
-const sections=document.querySelectorAll("main section");
-const navLinks=document.querySelectorAll(".nav-links a");
-const reveals=document.querySelectorAll(".reveal");
-const snackbar=document.getElementById("snackbar");
-const contactForm=document.getElementById("contactForm");
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script>
+        // 1. Initialize AOS Animations
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100,
+        });
 
-window.addEventListener("load",()=>{
-    setTimeout(()=>loader.classList.add("hidden"),450);
-});
+        // 2. Preloader
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            preloader.style.opacity = '0';
+            setTimeout(() => {
+                preloader.style.display = 'none';
+            }, 500);
+        });
 
-function updateNavbar(){
-    navbar.classList.toggle("scrolled",window.scrollY>30);
+        // 3. Dark Mode Toggle Logic
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleMobileBtn = document.getElementById('theme-toggle-mobile');
+        const html = document.documentElement;
 
-    let current="home";
-    sections.forEach(section=>{
-        if(window.scrollY>=section.offsetTop-220){
-            current=section.id;
+        // Check local storage or system preference
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+        } else {
+            html.classList.remove('dark');
         }
-    });
 
-    navLinks.forEach(link=>{
-        link.classList.toggle("active",link.getAttribute("href")==="#"+current);
-    });
-}
+        // const toggleTheme = () => {
+        //     html.classList.toggle('dark');
+        //     if (html.classList.contains('dark')) {
+        //         localStorage.setItem('theme', 'dark');
+        //     } else {
+        //         localStorage.setItem('theme', 'light');
+        //     }
+        // };
 
-function revealOnScroll(){
-    const trigger=window.innerHeight-90;
-    reveals.forEach(item=>{
-        if(item.getBoundingClientRect().top<trigger){
-            item.classList.add("active");
+        // 3. Force Dark Mode Always
+document.documentElement.classList.add('dark');
+localStorage.setItem('theme', 'dark');
+        
+
+        themeToggleBtn.addEventListener('click', toggleTheme);
+        themeToggleMobileBtn.addEventListener('click', toggleTheme);
+
+        // 4. Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // 5. Sticky Navbar styling on scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-lg');
+                navbar.classList.replace('py-4', 'py-2');
+            } else {
+                navbar.classList.remove('shadow-lg');
+                navbar.classList.replace('py-2', 'py-4');
+            }
+        });
+
+        // 6. Animated Counters
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200; // The lower the slower
+
+        const animateCounters = () => {
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+                    const inc = target / speed;
+
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + inc);
+                        setTimeout(updateCount, 15);
+                    } else {
+                        counter.innerText = target + (target > 1000 ? '+' : '');
+                    }
+                };
+                updateCount();
+            });
+        };
+
+        // Use Intersection Observer to trigger counter animation when in view
+        const observerOptions = {
+            threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        const aboutSection = document.getElementById('about');
+        if(aboutSection) {
+            observer.observe(aboutSection);
         }
-    });
-}
 
-window.addEventListener("scroll",()=>{
-    updateNavbar();
-    revealOnScroll();
-});
+        // 7. Active Section Highlighting
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
 
-contactForm.addEventListener("submit",(event)=>{
-    event.preventDefault();
-    contactForm.reset();
-    snackbar.classList.add("show");
-    setTimeout(()=>snackbar.classList.remove("show"),3600);
-});
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - sectionHeight / 3)) {
+                    current = section.getAttribute('id');
+                }
+            });
 
-updateNavbar();
-revealOnScroll();
-</script>
+            navLinks.forEach(link => {
+                link.classList.remove('text-purple-500');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('text-purple-500');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
