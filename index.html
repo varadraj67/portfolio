@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Varadraj | Software Developer</title>
     <meta name="description" content="Portfolio of Varadraj - Software Developer, Frontend Developer, and Python Developer.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -29,6 +30,22 @@
     </script>
 
     <style>
+
+        html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden !important; /* 'Nit' फिक्स करण्यासाठी */
+        position: relative;
+    }
+
+    /* 2. Blobs मुळे होणारा शिफ्टिंग फिक्स करण्यासाठी */
+    .ambient-blob {
+        display: block; /* Blobs ना नेहमी रिस्पॉन्सिव्ह ठेवा */
+        max-width: 100vw;
+    }
+        
         /* Custom Styles & Glassmorphism */
         body { font-family: 'Poppins', sans-serif; }
         
