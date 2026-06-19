@@ -102,6 +102,14 @@
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: #a855f7; border-radius: 4px; }
+   
+        /* Mobile padding adjustment for Bottom Nav and Top Logo */
+        @media (max-width: 767px) {
+            body { 
+                padding-top: 56px; /* Top Logo space */
+                padding-bottom: 64px; /* Bottom Nav space */
+            }
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 dark:bg-darkBg dark:text-slate-200 transition-colors duration-300">
@@ -110,7 +118,7 @@
         <div class="spinner"></div>
     </div>
 
-    <nav class="fixed w-full z-50 glass transition-all duration-300" id="navbar">
+    <!-- <nav class="fixed w-full z-50 glass transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <a href="#" class="text-2xl font-bold text-sunset">Varadraj.</a>
@@ -147,6 +155,60 @@
                 <a href="#experience" class="block px-3 py-2 rounded-md font-medium hover:bg-slate-100 dark:hover:bg-slate-800">Experience</a>
                 <a href="#projects" class="block px-3 py-2 rounded-md font-medium hover:bg-slate-100 dark:hover:bg-slate-800">Projects</a>
             </div>
+        </div>
+    </nav> -->
+
+    <!-- Desktop Navbar (लॅपटॉपसाठी वरती दिसेल, मोबाईलवर लपेल) -->
+    <nav class="hidden md:block fixed w-full z-50 glass transition-all duration-300 border-b border-transparent py-3" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-12">
+                <a href="#" class="text-3xl font-extrabold tracking-widest text-sunset z-50 relative">VARADRAJ<span class="text-pink-500">.</span></a>
+                
+                <div class="flex items-center space-x-8 lg:space-x-10">
+                    <a href="#home" class="nav-link font-medium text-sm tracking-wide text-slate-300 hover:text-pink-400 transition-colors">Home</a>
+                    <a href="#about" class="nav-link font-medium text-sm tracking-wide text-slate-300 hover:text-pink-400 transition-colors">About</a>
+                    <a href="#education" class="nav-link font-medium text-sm tracking-wide text-slate-300 hover:text-pink-400 transition-colors">Education</a>
+                    <a href="#skills" class="nav-link font-medium text-sm tracking-wide text-slate-300 hover:text-pink-400 transition-colors">Arsenal</a>
+                    <a href="#projects" class="nav-link font-medium text-sm tracking-wide text-slate-300 hover:text-pink-400 transition-colors">Projects</a>
+                </div>
+
+                <div class="flex">
+                    <a href="#contact" class="px-6 py-2.5 rounded-full bg-white/5 border border-white/10 hover:border-pink-500 hover:text-pink-400 transition-all text-sm font-bold tracking-wide">
+                        Contact Me
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Top Logo (मोबाईलवर फक्त तुमचं नाव वरती दिसेल) -->
+    <div class="md:hidden fixed top-0 left-0 w-full z-40 glass border-b border-white/10 h-14 flex items-center justify-center backdrop-blur-xl">
+        <a href="#" class="text-xl font-extrabold tracking-widest text-sunset">VARADRAJ<span class="text-pink-500">.</span></a>
+    </div>
+
+    <!-- Mobile Bottom App-Like Navigation (मोबाईलवर खालील बाजूस थेट लिंक्स दिसतील) -->
+    <nav class="md:hidden fixed bottom-0 left-0 w-full z-50 glass border-t border-white/10 backdrop-blur-xl pb-[env(safe-area-inset-bottom)]">
+        <div class="flex justify-around items-center h-16">
+            <a href="#home" class="nav-link flex flex-col items-center justify-center text-slate-400 hover:text-pink-400 transition-colors w-full h-full">
+                <i class="fas fa-home text-lg mb-1"></i>
+                <span class="text-[10px] font-semibold">Home</span>
+            </a>
+            <a href="#about" class="nav-link flex flex-col items-center justify-center text-slate-400 hover:text-pink-400 transition-colors w-full h-full">
+                <i class="fas fa-user text-lg mb-1"></i>
+                <span class="text-[10px] font-semibold">About</span>
+            </a>
+            <a href="#skills" class="nav-link flex flex-col items-center justify-center text-slate-400 hover:text-pink-400 transition-colors w-full h-full">
+                <i class="fas fa-code text-lg mb-1"></i>
+                <span class="text-[10px] font-semibold">Skills</span>
+            </a>
+            <a href="#projects" class="nav-link flex flex-col items-center justify-center text-slate-400 hover:text-pink-400 transition-colors w-full h-full">
+                <i class="fas fa-briefcase text-lg mb-1"></i>
+                <span class="text-[10px] font-semibold">Work</span>
+            </a>
+            <a href="#contact" class="nav-link flex flex-col items-center justify-center text-slate-400 hover:text-pink-400 transition-colors w-full h-full">
+                <i class="fas fa-envelope text-lg mb-1"></i>
+                <span class="text-[10px] font-semibold">Contact</span>
+            </a>
         </div>
     </nav>
 
